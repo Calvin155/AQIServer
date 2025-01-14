@@ -1,6 +1,5 @@
 package com.example.aqiserver.Controller;
 import com.example.aqiserver.Service.InfluxDBService;
-import com.influxdb.query.FluxTable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +18,7 @@ public class ParticulateMatterController {
 
     @GetMapping("/get-PM-Data")
     public String getPMData() {
-        String timeRangeStart = "-6h";
+        String timeRangeStart = "-15s";
         String timeRangeStop = "now()";
         String windowPeriod = "1h";
         List<String> pm_data = influxDBService.queryData(timeRangeStart, timeRangeStop, windowPeriod);
